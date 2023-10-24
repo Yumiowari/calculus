@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void imprimePolinomio(int **mat, int *res, int tam);
+void imprimePolinomio(float **mat, float *res, int tam);
 
 // códigos de erro:
 // 1: problema na leitura de arquivo
@@ -17,9 +17,9 @@ int main(int argc, char **argv){
 
     FILE *f = NULL; // arquivo
     int tam; // tamanho
-    int **mat = NULL; // matriz inicial
-    int *res = NULL; // vetor de resultados em cada ordem
-    int *aux = NULL; // vetor de resultados auxiliar
+    float **mat = NULL; // matriz inicial
+    float *res = NULL; // vetor de resultados em cada ordem
+    float *aux = NULL; // vetor de resultados auxiliar
 
     // LEITURA DE ARQUIVO
 
@@ -28,19 +28,19 @@ int main(int argc, char **argv){
 
     fscanf(f, "%d\n", &tam);
 
-    mat = (int**) malloc(sizeof(int*) * tam); if(mat == NULL)return 2;
+    mat = (float**) malloc(sizeof(float*) * tam); if(mat == NULL)return 2;
     for(int i = 0; i < tam; i++){
-        mat[i] = (int*) malloc(sizeof(int) * 2); if(mat[i] == NULL)return 2;
+        mat[i] = (float*) malloc(sizeof(float) * 2); if(mat[i] == NULL)return 2;
     }
 
-    res = (int*) malloc(sizeof(int) * tam); if(res == NULL)return 2;
+    res = (float*) malloc(sizeof(float) * tam); if(res == NULL)return 2;
 
-    aux = (int*) malloc(sizeof(int) * tam); if(aux == NULL)return 2;
+    aux = (float*) malloc(sizeof(float) * tam); if(aux == NULL)return 2;
     
 
     for(int i = 0; i < tam; i++){
-        fscanf(f, "%d ", &mat[i][0]);
-        fscanf(f, "%d\n", &mat[i][1]);
+        fscanf(f, "%f ", &mat[i][0]);
+        fscanf(f, "%f\n", &mat[i][1]);
     }
 
     //
@@ -53,7 +53,7 @@ int main(int argc, char **argv){
         for(int j = i; j < tam; j++){ // contador de elementos do vetor de resultados
             if(i > 0){
                 res[j] = (aux[j] - aux[j - 1]) / (mat[j][0] - mat[j - i][0]); // mat[j - i] uma vez que é x2 - x0 na terceira iteração, por exemplo.
-                printf("%d = (%d - %d) / (%d - %d)\n", res[j], aux[j], aux[j - 1], mat[j][0], mat[j - i][0]);
+                printf("%.3f = (%.3f - %.3f) / (%.3f - %.3f)\n", res[j], aux[j], aux[j - 1], mat[j][0], mat[j - i][0]);
             }else{ // para a primeira ordem
                 res[j] = mat[j][1];
                 aux[j] = res[j];
@@ -83,15 +83,15 @@ int main(int argc, char **argv){
     return 0;
 }
 
-void imprimePolinomio(int **mat, int *res, int tam){
+void imprimePolinomio(float **mat, float *res, int tam){
     for(int i = 0; i < tam; i++){
-        printf("x%d = %d ", i, mat[i][0]);
-        printf("fx%d = %d\n", i, mat[i][1]);
+        printf("x%d = %.3f ", i, mat[i][0]);
+        printf("fx%d = %.3f\n", i, mat[i][1]);
     }
 
     printf("\n");
 
-    for(int i = 0; i < tam; i++)printf("D%d = %d ", i, res[i]);
+    for(int i = 0; i < tam; i++)printf("D%d = %.3f ", i, res[i]);
 
     printf("\n");
 }
