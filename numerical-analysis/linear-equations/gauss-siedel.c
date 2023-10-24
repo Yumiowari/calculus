@@ -190,4 +190,4 @@ void imprimeMatriz(float **coef, float *res, int t){
     printf("\n");
 }
 
-// https://github.com/Yumiowari/numerical-analysis/tree/main/linear-equations
+// https://github.com/Yumiowari/calculus

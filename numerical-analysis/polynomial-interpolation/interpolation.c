@@ -171,5 +171,5 @@ void pivoteamento(float **var, int t){
     }
 }
 
-// https://github.com/Yumiowari/numerical-analysis/tree/main/polynomial-interpolation
+// https://github.com/Yumiowari/calculus
 

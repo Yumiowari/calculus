@@ -95,3 +95,5 @@ void imprimePolinomio(int **mat, int *res, int tam){
 
     printf("\n");
 }
+
+// https://github.com/Yumiowari/calculus
