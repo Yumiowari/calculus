@@ -1,5 +1,5 @@
 // Rafael Renó Corrêa
-// 24/10/2023
+// 26/10/2023
 // Cálculo Numérico para a Computação
 // Aproximação de funções pelo Método de Newton
 
@@ -24,10 +24,17 @@ int main(int argc, char **argv){
     float *aux = NULL; // vetor de resultados auxiliar
     float x; // x da função
     float fx; // f(x) da função
+    char *nome = NULL; // buffer para o nome do arquivo
+    
+    // LEITURA DO ARQUIVO
 
-    // LEITURA DE ARQUIVO
+    nome = (char*) malloc(sizeof(char) * (strlen("nome/") + strlen(argv[1]))); // '\0 implícito'
+    if(nome == NULL)return 2;
 
-    f = fopen(argv[1], "r");
+    strcpy(nome, "data/");
+    strcat(nome, argv[1]);
+
+    f = fopen(nome, "r");
     if(f == NULL)return 1;
 
     fscanf(f, "%d\n", &tam);
@@ -87,8 +94,8 @@ int main(int argc, char **argv){
     free(mat);
 
     free(res);
-
     free(aux);
+    free(nome);
 
     fclose(f);
 

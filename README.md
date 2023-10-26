@@ -16,7 +16,9 @@ A partir de soluções sorteadas na primeira iteração, as próximas soluções
 
 Para resolver em tempo humano, uma precisão é definida e, quando o erro relativo for inferior a ela, a solução é aceita.
 
-`gcc -lm -Wall gauss-jacobi.c -o gauss-jacobi -lm`
+Compilação: `gcc -lm -Wall gauss-jacobi.c -o gauss-jacobi`
+
+Uso: `./gauss-jacobi (nome do arquivo .txt em data/)`
 
 ## _Gauss-Siedel_
 
@@ -26,9 +28,11 @@ Assim sendo, soluções mais precisas foram encontradas no mesmo laço. O que di
 
 Além do mais, nos dois métodos a convergência das soluções é garantida ao dispor os maiores valores da linha na diagonal principal da matriz.
 
-`gcc -lm -Wall gauss-siedel.c -o gauss-siedel -lm`
+Compilação: `gcc -lm -Wall gauss-siedel.c -o gauss-siedel`
 
-# Aproximação de Funções
+Uso: `./gauss-siedel (nome do arquivo .txt em data/)`
+
+# Aproximação de Funções Polinomiais
 
 Sejam pontos arbitrários observados. 
 
@@ -38,9 +42,11 @@ Consiste na aproximação de coeficientes de um polinômio tal que o gráfico da
 
 Resolve as equações lineares de valores de $x$ para inferir os coeficientes do polinômio através da Eliminação Gaussiana.
 
-`gcc -lm -Wall interpolation.c -o interpolation -lm`
+Compilação: `gcc -lm -Wall polynomial.c -o polynomial -lm`
 
-## Método de Newton
+Uso: `./polynomial (nome do arquivo .txt em data/)`
+
+## Interpolação pelo Método de Newton
 
 Dados valores medidos, calcula o polinômio que passa pelos pontos no trecho. I. e., mesmo que os pontos tenham sido obtidos por outra função, o polinômio será, provavelmente, apenas válido para o intervalo da observação.
 
@@ -56,4 +62,6 @@ $P(x) = D_0 + D_1(x - x_0) + D_2(x - x_0)(x - x_1)...$
 
 Onde $D_0$ é $f[x_0]$, $D_1$ é $f[x_0, x_1]$, $D_2$ é $f[x_0, x_1, x_2]$, etc.
 
-`gcc -lm -Wall newton.c -o newton -lm`
+Compilação: `gcc -lm -Wall newton.c -o newton`
+
+Uso: `./newton (nome do arquivo .txt em data/)`

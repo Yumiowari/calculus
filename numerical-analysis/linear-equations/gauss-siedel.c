@@ -1,11 +1,12 @@
 // Rafael Renó Corrêa
-// 02/10/2023
+// 26/10/2023
 // Cálculo Numérico para a Computação
 // Algoritmo para resolver equações lineares. Método de Gauss-Siedel
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 void imprimeMatriz(float **coef, float *res, int t);
 
@@ -14,6 +15,8 @@ void imprimeMatriz(float **coef, float *res, int t);
 // 2: memória indisponível
 // -1: solução impossível
 int main(int argc, char *argv[]){
+    if(argc < 2)return 1;
+
     FILE *f = NULL; // ponteiro para o arquivo
     int n; // nº de incógnitas
     int max; // máximo de iterações
@@ -28,10 +31,17 @@ int main(int argc, char *argv[]){
     float *res = NULL; // vetor dos resultados
     float *sol = NULL; // vetor das soluções
     float ant; // solução anterior
+    char *nome = NULL; // buffer para o nome do arquivo
 
     // LEITURA DO ARQUIVO
 
-    f = fopen(argv[1], "r");
+    nome = (char*) malloc(sizeof(char) * (strlen("nome/") + strlen(argv[1]))); // '\0 implícito'
+    if(nome == NULL)return 2;
+
+    strcpy(nome, "data/");
+    strcat(nome, argv[1]);
+
+    f = fopen(nome, "r");
     if(f != NULL){
         fscanf(f, "%d\n", &n);
         //if(n > 10){
@@ -170,6 +180,7 @@ int main(int argc, char *argv[]){
 
     for(int i = 0; i < n; i++)free(coef[i]);
     free(coef);
+
     free(res);
     free(sol);
 

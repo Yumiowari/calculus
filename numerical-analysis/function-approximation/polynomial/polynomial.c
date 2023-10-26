@@ -1,11 +1,12 @@
 // Rafael Renó Corrêa
-// 02/10/2023
+// 26/10/2023
 // Cálculo Numérico para a Computação
 // Aproximação de funções por interpolação polinomial
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 void imprimeMatriz(float **var, float *res, int t);
 
@@ -26,10 +27,17 @@ int main(int argc, char *argv[]){
     float *x = NULL; // vetor para leitura
     float *coef = NULL; // vetor de coeficientes
     float aux; // auxiliar
+    char *nome = NULL; // buffer para o nome do arquivo
+    
+    // LEITURA DO ARQUIVO
 
-    // LEITURA DE ARQUIVO
+    nome = (char*) malloc(sizeof(char) * (strlen("nome/") + strlen(argv[1]))); // '\0 implícito'
+    if(nome == NULL)return 2;
 
-    f = fopen(argv[1], "r");
+    strcpy(nome, "data/");
+    strcat(nome, argv[1]);
+
+    f = fopen(nome, "r");
     if(f == NULL)return 1;
 
     fscanf(f, "%d\n", &t);
@@ -110,9 +118,11 @@ int main(int argc, char *argv[]){
 
     for(int i = 0; i < t; i++)free(var[i]);
     free(var);
+
     free(res);
     free(x);
     free(coef);
+    free(nome);
 
     fclose(f);
 
