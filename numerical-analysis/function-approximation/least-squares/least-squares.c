@@ -1,5 +1,5 @@
 // Rafael Renó Corrêa
-// 30/10/2023
+// 31/10/2023
 // Cálculo Numérico para a Computação
 // Aproximação de funções pelo Método dos Mínimos Quadrados
 
@@ -13,13 +13,12 @@
 
 void imprimeMatriz(float **mat, int t);
 
-void trocaLinha(float **var, int n, int m);
-
 void pivoteamento(float **var, int t);
 
 // códigos de erro:
 // 1: problema na leitura de arquivo
 // 2: memória insuficiente
+// -1: tamanho não permitido
 int main(int argc, char **argv){
     if(argc < 2)return 1;
 
@@ -42,6 +41,7 @@ int main(int argc, char **argv){
     if(f == NULL)return 1;
 
     fscanf(f, "%d\n", &tam);
+    if(tam > 10)return -1;
 
     mat = (float**) malloc(sizeof(float*) * tam); if(mat == NULL)return 2;
     for(int i = 0; i < tam; i++){
@@ -57,7 +57,7 @@ int main(int argc, char **argv){
 
 
 
-    // MÉTODO DOS MÍNIMOS QUADRADOS (compatível para p(x) = a + bx)
+    // MÉTODO DOS MÍNIMOS QUADRADOS (compatível para regressão linear, apenas)
 
     res = (float**) malloc(sizeof(float*) * 2); if(res == NULL)return 2;
     for(int i = 0; i < tam; i++){
@@ -85,8 +85,7 @@ int main(int argc, char **argv){
     c2 = res[1][2] / res[1][1];
     c1 = (res[0][2] - (res[0][1] * c2)) / res[0][0];
 
-    printf("a = %f\n", c1);
-    printf("b = %f\n", c2 * C);
+    printf("P(x) = %fx + %f\n", c1, c2 * C);
 
     //
 
@@ -105,15 +104,10 @@ void imprimeMatriz(float **mat, int t){
     printf("\n");
 }
 
-void trocaLinha(float **var, int n, int m){
-    float *aux = var[n];
-    var[n] = var[m];
-    var[m] = aux;
-}
-
 void pivoteamento(float **var, int t){
     int m; // índice da maior variável
     float fator;
+    float *aux;
 
     for(int i = 0; i < t; i++){ // linhas
         m = i;
@@ -123,14 +117,18 @@ void pivoteamento(float **var, int t){
             }
         }
 
-        trocaLinha(var, i, m);
+        aux = var[i];
+        var[i] = var[m];
+        var[m] = aux;
     }
 
     for(int i = 0; i < t - 1; i++){
         if(var[i][i] == 0){
             for(int j = 1; j < t; j++){
                 if(var[j][i] != 0){ // troca as linhas se houver zero na diagonal principal
-                    trocaLinha(var, i, j);
+                    aux = var[i];
+                    var[i] = var[j];
+                    var[j] = aux;
                     break;
                 }
             }
