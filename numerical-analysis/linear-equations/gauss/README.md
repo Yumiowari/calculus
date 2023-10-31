@@ -4,7 +4,7 @@ A partir de soluções sorteadas na primeira iteração, as próximas soluções
 
 Para resolver em tempo humano, uma precisão é definida e, quando o erro relativo for inferior a ela, a solução é aceita.
 
-Compilação: `gcc -lm -Wall gauss-jacobi.c -o gauss-jacobi`
+Compilação: `gcc -Wall gauss-jacobi.c -o gauss-jacobi`
 
 Uso: `./gauss-jacobi (nome do arquivo .txt em data/)`
 
@@ -16,6 +16,6 @@ Assim sendo, soluções mais precisas foram encontradas no mesmo laço. O que di
 
 Além do mais, nos dois métodos a convergência das soluções é garantida ao dispor os maiores valores da linha na diagonal principal da matriz.
 
-Compilação: `gcc -lm -Wall gauss-siedel.c -o gauss-siedel`
+Compilação: `gcc -Wall gauss-siedel.c -o gauss-siedel`
 
 Uso: `./gauss-siedel (nome do arquivo .txt em data/)`

@@ -35,7 +35,7 @@ int main(int argc, char *argv[]){
 
     // LEITURA DO ARQUIVO
 
-    nome = (char*) malloc(sizeof(char) * (strlen("nome/") + strlen(argv[1]))); // '\0 implícito'
+    nome = (char*) malloc(sizeof(char) * (strlen("nome/") + strlen(argv[1])));
     if(nome == NULL)return 2;
 
     strcpy(nome, "data/");

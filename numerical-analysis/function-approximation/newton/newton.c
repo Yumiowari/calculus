@@ -1,7 +1,7 @@
 // Rafael Renó Corrêa
-// 26/10/2023
+// 30/10/2023
 // Cálculo Numérico para a Computação
-// Aproximação de funções pelo Método de Newton
+// Aproximação de funções pelo Método dos Mínimos Quadrados
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,7 +28,7 @@ int main(int argc, char **argv){
     
     // LEITURA DO ARQUIVO
 
-    nome = (char*) malloc(sizeof(char) * (strlen("nome/") + strlen(argv[1]))); // '\0 implícito'
+    nome = (char*) malloc(sizeof(char) * (strlen("nome/") + strlen(argv[1])));
     if(nome == NULL)return 2;
 
     strcpy(nome, "data/");
@@ -44,14 +44,9 @@ int main(int argc, char **argv){
         mat[i] = (float*) malloc(sizeof(float) * 2); if(mat[i] == NULL)return 2;
     }
 
-    res = (float*) malloc(sizeof(float) * tam); if(res == NULL)return 2;
-
-    aux = (float*) malloc(sizeof(float) * tam); if(aux == NULL)return 2;
-    
-
     for(int i = 0; i < tam; i++){
-        fscanf(f, "%f ", &mat[i][0]);
-        fscanf(f, "%f\n", &mat[i][1]);
+        fscanf(f, "%f ", &mat[i][0]); // x
+        fscanf(f, "%f\n", &mat[i][1]); // f(x)
     }
 
     fscanf(f, "%f\n", &x);
@@ -61,6 +56,10 @@ int main(int argc, char **argv){
 
 
     // MÉTODO DE NEWTON
+
+    res = (float*) malloc(sizeof(float) * tam); if(res == NULL)return 2;
+
+    aux = (float*) malloc(sizeof(float) * tam); if(aux == NULL)return 2;
 
     for(int i = 0; i < tam; i++){ // contador de ordens
         for(int j = i; j < tam; j++){ // contador de elementos do vetor de resultados

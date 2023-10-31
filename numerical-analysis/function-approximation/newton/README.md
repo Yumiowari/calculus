@@ -14,6 +14,6 @@ $P(x) = D_0 + D_1(x - x_0) + D_2(x - x_0)(x - x_1)...$
 
 Onde $D_0$ é $f[x_0]$, $D_1$ é $f[x_0, x_1]$, $D_2$ é $f[x_0, x_1, x_2]$, etc.
 
-Compilação: `gcc -lm -Wall newton.c -o newton`
+Compilação: `gcc -Wall newton.c -o newton`
 
 Uso: `./newton (nome do arquivo .txt em data/)`

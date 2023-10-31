@@ -31,7 +31,7 @@ int main(int argc, char *argv[]){
     
     // LEITURA DO ARQUIVO
 
-    nome = (char*) malloc(sizeof(char) * (strlen("nome/") + strlen(argv[1]))); // '\0 implícito'
+    nome = (char*) malloc(sizeof(char) * (strlen("nome/") + strlen(argv[1])));
     if(nome == NULL)return 2;
 
     strcpy(nome, "data/");
@@ -65,8 +65,8 @@ int main(int argc, char *argv[]){
     for(int i = 0; i < t; i++)coef[i] = 1;
 
     for(int i = 0; i < t; i++){
-        fscanf(f, "%f ", &x[i]);
-        fscanf(f, "%f\n", &res[i]); 
+        fscanf(f, "%f ", &x[i]); // x
+        fscanf(f, "%f\n", &res[i]); // f(x)
     }
 
     for(int i = 0; i < t; i++){

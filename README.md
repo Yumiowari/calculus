@@ -16,6 +16,6 @@ Em: `linear-equations/`
 
 Sejam pontos arbitrários observados. 
 
-Consiste na aproximação de coeficientes de um polinômio tal que o gráfico da função contenha os pontos observados.
+Consiste na aproximação de coeficientes de um polinômio tal que o gráfico da função contenha (ou seja próximo) os pontos observados.
 
 Em: `function-approximation/`
