@@ -23,6 +23,7 @@ int main(int argc, char *argv[]){
     int c; // contador
     int m; // índice do maior valor
     float aux; // auxiliar
+    float fator; // para pivoteamento
     float x; // maior incógnita
     float e; // maior erro
     float rel; // erro relativo
@@ -84,7 +85,7 @@ int main(int argc, char *argv[]){
 
 
 
-    // AJUSTA AS LINHAS
+    // AJUSTA AS LINHAS (PIVOTEAMENTO)
 
     for(int i = 0; i < n; i++){
         m = 0;
@@ -105,6 +106,29 @@ int main(int argc, char *argv[]){
             aux = res[i];
             res[i] = res[m];
             res[m] = aux;
+        }
+    }
+
+    for(int i = 0; i < n - 1; i++){
+        if(coef[i][i] == 0){
+            for(int j = 1; j < n; j++){
+                if(coef[j][i] != 0){ // se houver zero na diagonal principal
+                    for(int k = 0; k < n; k++){ // troca as linhas
+                        aux = coef[i][k];
+                        coef[i][k] = coef[j][k];
+                        coef[j][k] = aux;
+                    }
+
+                    break;
+                }
+            }
+        }
+        
+        for(int j = i + 1; j < n; j++){
+            fator = coef[j][i] / coef[i][i];
+            for(int k = i; k < n + 1; k++){
+                coef[j][k] -= fator * coef[i][k];
+            }
         }
     }
 

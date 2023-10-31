@@ -23,13 +23,14 @@ int main(int argc, char *argv[]){
     int c; // contador
     int m; // índice do maior valor
     float aux; // auxiliar
+    float fator; // para pivoteamento
     float x; // maior incógnita
     float e; // maior erro
     float rel; // erro relativo
     float y; // precisão ε
     float **coef = NULL; // matriz dos coeficientes
     float *res = NULL; // vetor dos resultados
-    float *sol = NULL; // vetor das soluções
+    float *sol = NULL; // vetor para as soluções
     float *ant = NULL; // vetor das soluções anteriores
     char *nome = NULL; // buffer para o nome do arquivo
     
@@ -44,6 +45,10 @@ int main(int argc, char *argv[]){
     f = fopen(nome, "r");
     if(f != NULL){
         fscanf(f, "%d\n", &n);
+        //if(n > 10){
+        //    printf("A matriz é muito grande!\n");
+        //    return 1;
+        //}
         fscanf(f, "%f\n", &y);
         fscanf(f, "%d\n", &max);
 
@@ -65,14 +70,6 @@ int main(int argc, char *argv[]){
             }
         }
 
-        sol = (float*) malloc(sizeof(float*) * n);
-        if(sol == NULL)return 2;
-        for(int i = 0; i < n; i++)fscanf(f, "%f ", &sol[i]);
-
-        ant = (float*) malloc(sizeof(float*) * n);
-        if(ant == NULL)return 2;
-        for(int i = 0; i < n; i++)fscanf(f, "%f ", &ant[i]);
-
         printf("É a matriz de equações lineares:\n");
         imprimeMatriz(coef, res, n);
     }else{
@@ -85,7 +82,7 @@ int main(int argc, char *argv[]){
 
 
 
-    // AJUSTA AS LINHAS
+    // AJUSTA AS LINHAS (PIVOTEAMENTO)
 
     for(int i = 0; i < n; i++){
         m = 0;
@@ -109,6 +106,29 @@ int main(int argc, char *argv[]){
         }
     }
 
+    for(int i = 0; i < n - 1; i++){
+        if(coef[i][i] == 0){
+            for(int j = 1; j < n; j++){
+                if(coef[j][i] != 0){ // se houver zero na diagonal principal
+                    for(int k = 0; k < n; k++){ // troca as linhas
+                        aux = coef[i][k];
+                        coef[i][k] = coef[j][k];
+                        coef[j][k] = aux;
+                    }
+
+                    break;
+                }
+            }
+        }
+        
+        for(int j = i + 1; j < n; j++){
+            fator = coef[j][i] / coef[i][i];
+            for(int k = i; k < n + 1; k++){
+                coef[j][k] -= fator * coef[i][k];
+            }
+        }
+    }
+
     printf("Após o ajuste de linhas:\n");
     imprimeMatriz(coef, res, n);
 
@@ -117,6 +137,14 @@ int main(int argc, char *argv[]){
 
 
     // GAUSS-JACOBI
+
+    sol = (float*) malloc(sizeof(float*) * n);
+    if(sol == NULL)return 2;
+    for(int i = 0; i < n; i++)fscanf(f, "%f ", &sol[i]);
+
+    ant = (float*) malloc(sizeof(float*) * n);
+    if(ant == NULL)return 2;
+    for(int i = 0; i < n; i++)fscanf(f, "%f ", &ant[i]);
 
     c = 0;
 
