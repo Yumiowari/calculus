@@ -1,6 +1,6 @@
 # Resolução de Equações Lineares
 
-Seja as equações lineares:
+Sejam as equações lineares:
 
 $ax + by + cz = d$ \
 $ex + fy + gz = h$ \
@@ -16,6 +16,6 @@ Em: `linear-equations/`
 
 Sejam pontos arbitrários observados. 
 
-Consiste na aproximação de coeficientes de um polinômio tal que o gráfico da função contenha (ou seja próximo) os pontos observados.
+Consiste na aproximação de coeficientes de um polinômio tal que o gráfico da função seja próximo a todos os pontos.
 
 Em: `function-approximation/`
