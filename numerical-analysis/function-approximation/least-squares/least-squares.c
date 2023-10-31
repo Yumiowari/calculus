@@ -18,7 +18,6 @@ void pivoteamento(float **var, int t);
 // códigos de erro:
 // 1: problema na leitura de arquivo
 // 2: memória insuficiente
-// -1: tamanho não permitido
 int main(int argc, char **argv){
     if(argc < 2)return 1;
 
@@ -41,7 +40,6 @@ int main(int argc, char **argv){
     if(f == NULL)return 1;
 
     fscanf(f, "%d\n", &tam);
-    if(tam > 10)return -1;
 
     mat = (float**) malloc(sizeof(float*) * tam); if(mat == NULL)return 2;
     for(int i = 0; i < tam; i++){
