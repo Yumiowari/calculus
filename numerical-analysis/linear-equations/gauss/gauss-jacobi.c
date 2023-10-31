@@ -1,7 +1,7 @@
 // Rafael Renó Corrêa
-// 26/10/2023
+// 31/10/2023
 // Cálculo Numérico para a Computação
-// Algoritmo para resolver equações lineares. Método de Gauss-Jacobi
+// Algoritmo para resolver equações lineares pelo Método de Gauss-Jacobi
 
 #include <stdio.h>
 #include <stdlib.h>

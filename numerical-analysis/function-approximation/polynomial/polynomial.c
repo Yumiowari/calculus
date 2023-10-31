@@ -1,7 +1,7 @@
 // Rafael Renó Corrêa
 // 31/10/2023
 // Cálculo Numérico para a Computação
-// Aproximação de funções por interpolação polinomial
+// Aproximação de funções por Interpolação Polinomial
 
 #include <stdio.h>
 #include <stdlib.h>

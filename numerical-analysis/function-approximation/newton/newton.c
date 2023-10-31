@@ -1,7 +1,7 @@
 // Rafael Renó Corrêa
-// 30/10/2023
+// 31/10/2023
 // Cálculo Numérico para a Computação
-// Aproximação de funções pelo Método dos Mínimos Quadrados
+// Aproximação de funções pelo Método de Newton
 
 #include <stdio.h>
 #include <stdlib.h>
