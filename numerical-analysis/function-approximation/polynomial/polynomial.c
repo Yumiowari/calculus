@@ -1,5 +1,5 @@
 // Rafael Renó Corrêa
-// 26/10/2023
+// 31/10/2023
 // Cálculo Numérico para a Computação
 // Aproximação de funções por interpolação polinomial
 
