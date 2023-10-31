@@ -1,8 +1,8 @@
 ## Método dos Mínimos Quadrados
 
-Com $\alpha_{ij} = \alpha_{ji} = \sum_{k=1}^{m}g_{i}(x_{k})*g_{k}(x_{k})$
+Com $\alpha_{ij} = \alpha_{ji} = \sum\limits_{k=1}^{m}g_{i}(x_{k})*g_{k}(x_{k})$
 
-e $\beta_{i} = \sum_{k=1}^{m}f(x_k)*g_{i}(x_{k})$.
+e $\beta_{i} = \sum\limits_{k=1}^{m}f(x_k)*g_{i}(x_{k})$.
 
 Para a regressão linear, por exemplo, a resolução da matriz por Eliminação Gaussiana:
 
