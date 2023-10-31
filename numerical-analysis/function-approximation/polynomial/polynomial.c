@@ -141,15 +141,10 @@ void imprimeMatriz(float **var, float *res, int t){
     printf("\n");
 }
 
-void trocaLinha(float **var, int n, int m){
-    float *aux = var[n];
-    var[n] = var[m];
-    var[m] = aux;
-}
-
 void pivoteamento(float **var, int t){
     int m; // índice da maior variável
     float fator;
+    float *aux;
 
     for(int i = 0; i < t; i++){ // linhas
         m = i;
@@ -159,14 +154,21 @@ void pivoteamento(float **var, int t){
             }
         }
 
-        trocaLinha(var, i, m);
+        // troca as linhas
+        aux = var[i];
+        var[i] = var[m];
+        var[m] = aux;
     }
 
     for(int i = 0; i < t - 1; i++){
         if(var[i][i] == 0){
             for(int j = 1; j < t; j++){
-                if(var[j][i] != 0){ // troca as linhas se houver zero na diagonal principal
-                    trocaLinha(var, i, j);
+                if(var[j][i] != 0){ // se houver zero na diagonal principal
+                    // troca as linhas
+                    aux = var[i];
+                    var[i] = var[j];
+                    var[j] = aux;
+
                     break;
                 }
             }
