@@ -1,15 +1,15 @@
 // Rafael Renó Corrêa
 // 14/11/2023
 // Cálculo Numérico para a Computação
-// Integração Numérica pela Regra dos Trapézios Generalizada
+// Aproximação de integrais pela Regra dos Trapézios Generalizada
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 
-#define fx (1 / (x + 1))
-#define ddfx (2 / pow((x + 1), 3))
+#define fx (sqrt(x + 1))
+#define ddfx (1 / (4 * pow(x + 1, 3 / 2))) // derivada segunda ordem
 
 int main(int argc, char **argv){
     if(argc < 4)return 1;
@@ -57,3 +57,5 @@ int main(int argc, char **argv){
 
     return 0;
 }
+
+// https://github.com/Yumiowari/calculus
