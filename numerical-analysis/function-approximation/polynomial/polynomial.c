@@ -10,8 +10,6 @@
 
 void imprimeMatriz(float **var, float *res, int t);
 
-void trocaLinha(float **var, int n, int m);
-
 void pivoteamento(float **var, int t);
 
 // códigos de erro:
@@ -41,10 +39,6 @@ int main(int argc, char *argv[]){
     if(f == NULL)return 1;
 
     fscanf(f, "%d\n", &t);
-    //if(t > 10){
-    //    printf("A matriz é muito grande!\n");
-    //    return 1;
-    //} 
 
     var = (float**) malloc(sizeof(float*) * t);
     if(var == NULL)return 2;
