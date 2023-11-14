@@ -4,9 +4,9 @@ Dados valores medidos, calcula o polinômio que passa pelos pontos no trecho. I.
 
 Para fazê-lo, na 1º ordem: $f[x_0, x_1] = \frac{f(x_1) - f(x_0)}{x_1 - x_0}$ e 
 
-$f[x_1, x_2] = \frac{f(x_2) - f(x_1)}{x_2 - x_1}$. 
+$f[x_1, x_2] = \frac{f(x_2) - f(x_1)}{x_2 - x_1}.$
 
-Na 2ª ordem: $f[x_0, x_1, x_2] = \frac{f[x_0, x_1] - f[x_1, x_2]}{x_2 - x_1}$.
+Na 2ª ordem: $f[x_0, x_1, x_2] = \frac{f[x_0, x_1] - f[x_1, x_2]}{x_2 - x_1}.$
 
 E assim por diante. Ao fim das iterações, o polinômio será dado por
 
