@@ -1,7 +1,7 @@
 // Rafael Renó Corrêa
 // 14/11/2023
 // Cálculo Numérico para a Computação
-// Integração Numérica pela Regra dos Trapézios Generalizad
+// Integração Numérica pela Regra dos Trapézios Generalizada
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -48,7 +48,7 @@ int main(int argc, char **argv){
         if(ddfx > max)max = ddfx;
     }
 
-    E = (((b - a)/12) * (b - a)) * fabs(max);
+    E = ((pow((b - a) / n, 2)/12) * (b - a)) * fabs(max);
 
     printf("Resultado: %.6f\n", res);
     printf("Erro: %.6f\n", E);
