@@ -12,32 +12,20 @@
 #define ddfx (2 / pow((x + 1), 3))
 
 int main(int argc, char **argv){
-    if(argc < 2)return 1;
+    if(argc < 4)return 1;
 
     float a, b; // intervalo da integração
+    int n; // qtd de intervalos
     float x;
     float res; // resultado da integração
     float max; // f''x máximo
     float E; // erro
-    int n; // qtd de intervalos
-    FILE *f = NULL; // arquivo
-    char *nome = NULL; // buffer para o nome do arquivo
     
-    // LEITURA DO ARQUIVO
+    // TRATAMENTO DOS PARÂMETROS
 
-    nome = (char*) malloc(sizeof(char) * (strlen("nome/") + strlen(argv[1])));
-    if(nome == NULL)return 2;
-
-    strcpy(nome, "data/");
-    strcat(nome, argv[1]);
-
-    f = fopen(nome, "r");
-    if(f == NULL)return 1;
-
-    fscanf(f, "%f ", &a); fscanf(f, "%f\n", &b);
-    fscanf(f, "%d\n", &n);
-
-    fclose(f);
+    a = atoi(argv[1]);
+    b = atoi(argv[2]);
+    n = atoi(argv[3]);
 
     //
 
@@ -49,7 +37,6 @@ int main(int argc, char **argv){
     x = a; res += fx; // f(x0)
     for(int i = 1; i < n; i++){
         x = a + ((b - a) / n) * i; // (b - a) / n <-> passo
-        printf("%f\n", x);
         res += 2 * fx;
     }
     x = b; res += fx; // f(xn)

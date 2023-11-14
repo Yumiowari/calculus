@@ -7,3 +7,7 @@ $\int\limits_{a}^{b} f(x) dx$ = $\frac{h}{2} (f(x_0) + f(x_n) + 2 \sum\limits_{i
 Com erro:
 
 $| E | \leq \frac{h^2}{12} (x_n - x_0) max |f''(x_k) |$, $0 \leq k \leq n$.
+
+Compilação: `gcc -Wall trapezoidal.c -o trapezoidal -lm`
+
+Uso: `./trapezoidal (a) (b) (n)`
