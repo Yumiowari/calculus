@@ -1,16 +1,12 @@
 // Rafael Renó Corrêa
-// 26/11/2023
+// 03/12/2023
 // Cálculo Numérico para a Computação
-// Aproximação de funções pela Forma de Lagrange
+// Calcula o valor de x no polinômio de Lagrange interpolado
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-
-void imprimeMatriz(float **var, float *res, int t);
-
-void pivoteamento(float **var, int t);
 
 // códigos de erro:
 // 1: problema na leitura de arquivo
@@ -19,13 +15,14 @@ int main(int argc, char *argv[]){
     if(argc < 2)return 1;
 
     FILE *f = NULL; // arquivo
-    int t; // tamanho dos vetores
-    float *x = NULL; // valores de x medidos
-    float *y = NULL; // valores de f(x) medidos
-    float u; // valor para calcular o resultado do polinômio
-    float L;
-    float res = 0; // resultado para x = u
     char *nome = NULL; // buffer para o nome do arquivo
+
+    int t = 0; // tamanho dos vetores
+    float *x = NULL; // valores de x observados
+    float *y = NULL; // valores de f(x) observados
+    float u; // valor para calcular o resultado do polinômio
+    float L; // Lagrange
+    float res = 0; // resultado para f(u)
     
     // LEITURA DO ARQUIVO
 
@@ -63,7 +60,7 @@ int main(int argc, char *argv[]){
         L = y[i];
 
         for(int j = 0; j < t; j++){
-            if(i != j){
+            if(i != j){ // exceto quando ocorreria divisão por zero!
                 L *= (u - x[j]) / (x[i] - x[j]);
             }
         }
@@ -82,3 +79,5 @@ int main(int argc, char *argv[]){
 
     return 0;
 }
+
+// https://github.com/Yumiowari/calculus
