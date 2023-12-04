@@ -1,6 +1,6 @@
 ## Mínimos Quadrados
 
-Calcula a __regressão linear__ pelo Método dos Mínimos Quadrados.
+Interpola a __regressão linear__ pelo Método dos Mínimos Quadrados.
 
 Compilação: `gcc -Wall least-squares.c -o least-squares`
 
