@@ -1,6 +1,6 @@
-## Interpolação pelo Método de Newton
+## Newton
 
-Calcula o valor de _x_ no polinômio de Newton interpolado.
+Interpola o valor de _P(x)_ pelo __Método de Newton__.
 
 Compilação: `gcc -Wall newton.c -o newton`
 

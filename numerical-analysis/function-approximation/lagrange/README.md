@@ -1,6 +1,6 @@
-## Forma de Lagrange
+## Lagrange
 
-Calcula o valor de _x_ no polinômio de Lagrange interpolado.
+Interpola o valor de _P(x)_ pela __Fórmula de Lagrange__.
 
 Compilação: `gcc -Wall lagrange.c -o lagrange`
 
